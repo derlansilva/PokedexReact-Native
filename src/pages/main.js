@@ -1,9 +1,10 @@
 import React , { useEffect , useState } from 'react';
 
-import {View , FlatList , SafeAreaView, Image , Text  , StyleSheet} from 'react-native'
+import {View , FlatList , SafeAreaView, Image , Text  , StyleSheet , TouchableOpacity} from 'react-native'
 
 
-export default function Main() {
+
+export default function Main({navigation}) {
 
     const [pokemons , setPokemons ] = useState([])
     
@@ -31,7 +32,7 @@ export default function Main() {
                 keyExtractor={(pokemon) => pokemon.name}
                 contentContainerStyle = {{ flexGrow : 1}}
                 renderItem = {PokemonShow}
-            />
+            ></FlatList>
         </SafeAreaView>
     )
 }
@@ -46,10 +47,12 @@ function PokemonShow(item){
             <View style={styles.viewimage}>
                 <Image style={styles.img} source={{ uri : imageurl}}/>
             </View>
+            <View style={{flexDirection: 'column'}}>
+
             <View style={styles.viewtxt}>
                 <View style={{
-                    width: 100 ,
-                    height: 50,
+                    width: 50 ,
+                    height: 30,
                     marginTop:-2,
                     backgroundColor: '#fff',
                     alignItems: 'center',
@@ -59,7 +62,7 @@ function PokemonShow(item){
 
             
                 }}>
-                    <Text style={{color: '#111' , fontSize: 25 ,  fontFamily: 'Palatino-Bold', marginTop: 9}}>
+                    <Text style={{color: '#111' , fontSize: 15 ,  fontFamily: 'Palatino-Bold', marginTop: 5}}>
                         Nome</Text>
                 </View>
                 <View>
@@ -68,8 +71,8 @@ function PokemonShow(item){
             </View>
             <View style={styles.viewnumber}>
                 <View style={{
-                    width: 100 ,
-                    height: 50,
+                    width: 50 ,
+                    height: 30,
                     marginTop:-2,
                     backgroundColor: '#fff',   
                     alignItems: 'center',
@@ -79,7 +82,7 @@ function PokemonShow(item){
 
                      
                 }} >
-                    <Text style={{color: '#111' , fontSize: 25 , fontFamily: 'Palatino-Bold', marginTop: 9}}>N°</Text>
+                    <Text style={{color: '#111' , fontSize: 15 , fontFamily: 'Palatino-Bold', marginTop: 5}}>N°</Text>
                 </View>
                 <View>
                     <Text style={styles.numbername}>{pokemonNumber}</Text>
@@ -88,8 +91,8 @@ function PokemonShow(item){
 
             <View style={styles.viewtype}>
                 <View style={{
-                    width: 100 ,
-                    height: 50,
+                    width: 50 ,
+                    height: 30,
                     marginTop:-2,
                     backgroundColor: '#fff',   
                     alignItems: 'center',
@@ -99,11 +102,13 @@ function PokemonShow(item){
 
                      
                 }} >
-                    <Text style={{color: '#111' , fontSize: 25 , fontFamily: 'Palatino-Bold', marginTop: 9}}>Tipo</Text>
+                    <Text style={{color: '#111' , fontSize: 15 , fontFamily: 'Palatino-Bold', marginTop: 5}}>Tipo</Text>
                 </View>
                 <View>
                     <Text style={styles.numbername}>{type}</Text>
                 </View>
+            </View>
+
             </View>
             
         </View>
@@ -112,18 +117,18 @@ function PokemonShow(item){
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'beige',
+        backgroundColor: '#050404',
         justifyContent: "space-between",
     },
     img: {
-        width:300,
-        height:300,
-        marginTop: 5
+        width:100,
+        height:100,
+        marginTop: 10
        
     },
     viewimage: {
-        width:300,
-        height:300,
+        width:120,
+        height:120,
         borderRadius: 150,
         backgroundColor: 'beige',
         padding: 15,
@@ -131,59 +136,64 @@ const styles = StyleSheet.create({
         alignContent: 'center'
     },
     viewtxt: {
-        width: 300,
-        height: 50,
+        width: 190,
+        height: 30,
         backgroundColor: 'beige',
-        marginTop: 45,
+        marginTop: 2,
         borderRadius: 15,
         flexDirection: 'row',
         borderWidth: 2,
+        marginHorizontal: 15 ,
     },
 
     viewnumber:{
-        width: 300,
-        height: 50,
+        width: 190,
+        height: 30,
         backgroundColor: 'beige',
         marginTop: 5,
         flexDirection: 'row',
         borderRadius: 15,
         borderWidth: 2,
+        marginHorizontal: 15 ,
     }, 
 
     viewtype:{
-        width: 300,
-        height: 50,
+        width: 190,
+        height: 30,
         backgroundColor: 'beige',
         marginTop: 5,
         flexDirection: 'row',
         borderRadius: 15,
         borderWidth: 2,
+        marginHorizontal: 15 ,
     }, 
     pokename: {
-        fontSize: 30,
+        fontSize: 15,
         color: '#111',
         fontFamily: 'Palatino-Bold',
         fontWeight: 'normal',
-        marginHorizontal: 15,
+        marginHorizontal: 1,
         marginTop: 5
     }, 
     numbername: {
-        fontSize: 30,
+        fontSize: 15,
         color: '#111',
-        marginHorizontal: 15,
-        marginTop: 8,
+        marginHorizontal: 5,
+        marginTop: 6,
         fontFamily: 'Palatino-Bold',
     },
     pokecontainer: {
         flex: 1,
-        width: 375,
-        height:650,
+        height:200,
         borderColor: "#555",
         padding: 20,
         marginBottom: 20,
-        backgroundColor: '#AAE8AA',
+        backgroundColor: '#111',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexDirection: 'row'
     },
     
 })
+
+//backgroundColor: '#050404',
