@@ -10,8 +10,8 @@ const Stack = createStackNavigator()
 export default  Routes=()=>{
     return(
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="Pokemons" component={Main}/>
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+                <Stack.Screen  name="Pokemons" component={Main}/>
                 <Stack.Screen name="Description" component={Details}/>
             </Stack.Navigator>
         </NavigationContainer>

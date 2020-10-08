@@ -23,6 +23,9 @@ export default function Main() {
 
     return(
         <SafeAreaView style={styles.container}>
+            <View style={{ alignItems: 'center'}}>
+            <Image style={{width: 100 , height: 50 ,alignItems: 'center'}} source={require('../../assets/splash.png')}/>
+            </View>
             <FlatList
                 data={pokemons}
                 keyExtractor={(pokemon) => pokemon.name}
